@@ -1,20 +1,24 @@
 public class Employee {
-    private String fio;
+    private String fullName;
     private int depart;
     private int salary ;
+    private int id = 0;
+    static int counter = 0;
 
-    static int id = 0;
-    static int getId() {
-        return id;
+    public Employee(String fullName, int depart, int salary){
+        this.fullName = fullName;
+        this.depart = depart;
+        this.salary = salary;
+        this.id = counter++;
     }
 
 
-    public String getFio() {
-        return fio;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFio(String fio) {
-        this.fio = fio;
+    public void setFio(String fullName) {
+        this.fullName = fullName;
     }
 
     public int getDepart() {
@@ -32,15 +36,15 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
-    public Employee(String fio, int depart, int salary){
-        this.fio = fio;
-        this.depart = depart;
-        this.salary = salary;
-        id++;
+
+    public static int getId() {
+        return counter;
     }
+
+
 
     @Override
     public String toString() {
-        return "" + fio  +  " " + depart +  " " + salary ;
+        return "" + fullName  +  " " + depart +  " " + salary ;
     }
 }

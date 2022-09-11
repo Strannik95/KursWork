@@ -1,7 +1,8 @@
 public class Main {
+    private static Employee[] employees = new Employee[10];
     public static void main(String[] args) {
 
-        Employee[] employees = new Employee[10];
+
         employees[0] = new Employee("Иванов Иван Иванович", Employee.getId(), 45000);
         employees[1] = new Employee("Петров Петр Петрович", Employee.getId(), 23000);
         employees[2] = new Employee("Смирнов Олег Олегович", Employee.getId(), 25000);
@@ -14,40 +15,53 @@ public class Main {
         employees[9] = new Employee("Цезарев Нерон Клавдиевич", Employee.getId(), 55000);
 
 
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+            for (Employee employee : employees) {
+                System.out.println(employee);
+            }
         System.out.println();
+        System.out.println("Сумма затрат за месяц: " + totalSalary());
+        System.out.println();
+        System.out.println("Сотрудник с максимальной зарплатой " + maxSalary() + " рублей");
+        System.out.println();
+        System.out.println("Сотрудник с минимальной зарплатой " + minSalary() + " рублей");
+        System.out.println();
+        System.out.println("Среднее значение зарплат " + midSalary() + " рублей ");
 
+
+    }
+
+
+    public static int totalSalary(){
         int allSalary = 0;
         for (int i = 0; i < employees.length; i++) {
             allSalary += employees[i].getSalary();
         }
-        System.out.println("Сумма затрат за месяц: " + allSalary);
-
-        System.out.println();
-        int maxSalary = 0;
+        return allSalary;
+    }
+    public static int maxSalary(){
+        int maxSalarySum = 0;
         for (int k = 0; k < employees.length; k++) {
-            if (employees[k].getSalary() > maxSalary) {
-                maxSalary = employees[k].getSalary();
+            if (employees[k].getSalary() > maxSalarySum) {
+                maxSalarySum = employees[k].getSalary();
             }
         }
-        System.out.println("Сотрудник с максимальной зарплатой " + maxSalary + " рублей");
-        System.out.println();
-
-        int minSalary = maxSalary;
+        return maxSalarySum;
+    }
+    public static int minSalary(){
+        int minSalarySum = maxSalary();
         for (int j = employees.length - 1; j >= 0; j--) {
-            if (employees[j].getSalary() < minSalary) {
-                minSalary = employees[j].getSalary();
+            if (employees[j].getSalary() < minSalarySum) {
+                minSalarySum = employees[j].getSalary();
             }
         }
-        System.out.println("Сотрудник с максимальной зарплатой " + minSalary + " рублей");
-        System.out.println();
-        int midSalary = 0;
-        for (int a = 0; a < employees.length; a++){
-            midSalary = allSalary/ employees.length;
+        return minSalarySum;
+    }
+    public static int midSalary(){
+        int midSalarySum = 0;
+        for (int a = 0; a < employees.length; a++) {
+            int allSalary = totalSalary();
+            midSalarySum = allSalary / employees.length;
         }
-        System.out.println("Среднее значение зарплат " + midSalary + " рублей ");
-
+        return midSalarySum;
     }
 }
