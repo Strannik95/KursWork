@@ -45,28 +45,24 @@ public class Main {
         }
         return allSalary;
     }
-    public static Employee findMaxSalary(){
-        Employee result = employees[0];
-        int maxSalary = employees[0].getSalary();
+    public static int findMaxSalary(){
+        int maxSalary = 0;
         for (Employee employee : employees) {
             if (employee.getSalary() > maxSalary) {
                 maxSalary = employee.getSalary();
-                result = employee;
             }
         }
-        return result;
+        return maxSalary;
     }
 
-    public static Employee findMinSalary(){
-        Employee result = employees[0];
-        int minSalary = employees[0].getSalary();
+    public static int findMinSalary(){
+        int minSalary = Integer.MAX_VALUE ;
         for (Employee employee : employees) {
             if (employee.getSalary() < minSalary) {
                 minSalary = employee.getSalary();
-                result = employee;
             }
         }
-        return result;
+        return minSalary;
     }
     public static float findAverageSalary(){
         int counter = 0;
