@@ -2,7 +2,7 @@ public class Employee {
     private String fullName;
     private int depart;
     private int salary ;
-    private int id = 0;
+    private Integer id = 0;
     static int counter = 0;
 
     public Employee(String fullName, int depart, int salary){
@@ -17,7 +17,7 @@ public class Employee {
         return fullName;
     }
 
-    public void setFio(String fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
@@ -37,7 +37,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public static int getId() {
+    public Integer getId() {
         return counter;
     }
 
